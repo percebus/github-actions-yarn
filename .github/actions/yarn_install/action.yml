@@ -1,5 +1,5 @@
-name: npm install
-description: npm install
+name: yarn install
+description: yarn install
 inputs:
   ls_options:
     description: ls options
@@ -19,7 +19,7 @@ runs:
       shell: bash
       run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}
 
-    - name: npm run setup:ci
+    - name: yarn run setup:ci
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: yarn run setup:ci --if-present

@@ -4,8 +4,8 @@ on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 jobs:
-  npm_run_lint:
-    name: npm run lint
+  yarn_run_lint:
+    name: yarn run lint
     runs-on: ubuntu-latest
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
