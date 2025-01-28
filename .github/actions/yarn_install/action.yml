@@ -1,0 +1,51 @@
+name: yarn install
+description: yarn install
+inputs:
+  working-directory:
+    description: working-directory
+    required: false
+    default: "."
+
+  ls_options:
+    description: ls options
+    required: false
+    # in windows, la does NOT work
+    default: "-la"
+
+  yarn_install_cli_options:
+    description: yarn install cli options
+    required: false
+    default: "--frozen-lockfile"
+
+runs:
+  using: composite
+  steps:
+    - name: ls
+      shell: bash
+      run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}
+
+    - name: yarn run setup:ci
+      if: ${{ inputs.script_preinstall }} != ""
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      # NOTE: "npm run foo --if-present" does work
+      # BUT "yarn run foo --if-present" does NOT work
+      run: npm run ${{ inputs.script_preinstall }}
+
+    - name: npm run setup:ci
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      # run: yarn run setup:ci --if-present # FIXME does NOT work
+      run: npm run setup:ci --if-present
+
+    - name: rm -rf ./node_modules
+      shell: bash
+      run: rm -rf ${{ inputs.working-directory }}/node_modules
+
+    - name: yarn install
+      shell: bash
+      run: yarn install ${{ inputs.yarn_install_cli_options }} --cwd ${{ inputs.working-directory }}
+
+    - name: ls ./node_modules
+      shell: bash
+      run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}/node_modules
