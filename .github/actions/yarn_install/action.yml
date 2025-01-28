@@ -1,16 +1,16 @@
 name: yarn install
 description: yarn install
 inputs:
+  working-directory:
+    description: working-directory
+    required: false
+    default: "."
+
   ls_options:
     description: ls options
     required: false
     # in windows, la does NOT work
     default: "-la"
-
-  working-directory:
-    description: working-directory
-    required: false
-    default: "."
 
   yarn_install_cli_options:
     description: yarn install cli options
