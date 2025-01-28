@@ -7,6 +7,10 @@
   "author": "JCystems",
   "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
+    "setup:ci": "echo 'setup:ci'",
+    "rm:node_modules": "rm -rf ./node_modules",
+    "preclean-install": "npm run rm:node_modules",
+    "clean-install": "yarn install --frozen-lockfile",
     "prettier": "prettier .",
     "prettier:write": "yarn run prettier --write",
     "prettier:check": "yarn run prettier --check",

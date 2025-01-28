@@ -12,6 +12,11 @@ inputs:
     required: false
     default: "."
 
+  script_preinstall:
+    description: preinstall
+    required: false
+    default: ""
+
 runs:
   using: composite
   steps:
@@ -19,11 +24,17 @@ runs:
       shell: bash
       run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}
 
-    - name: npm run setup:ci
+    - name: yarn run setup:ci
+      if: ${{ inputs.script_preinstall }} != ""
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      # run: yarn run setup:ci --if-present # FIXME this fails
-      run: npm run setup:ci --if-present # XXX
+      # NOTE: "npm run foo --if-present" does work
+      # BUT "yarn run foo --if-present" does NOT work
+      run: yarn run ${{ inputs.script_preinstall }}
+
+    - name: rm -rf ./node_modules
+      shell: bash
+      run: rm -rf ${{ inputs.working-directory }}/node_modules
 
     - name: yarn install
       shell: bash
