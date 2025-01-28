@@ -7,8 +7,9 @@
   "author": "JCystems",
   "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
-    "echo:bananas": "echo 'bananas'",
-    "setup:ci": "yarn run echo:bananas",
+    "npm:install:global:all": "npm install --location global yarn",
+    "setup": "npm run npm:install:global:all",
+    "setup:ci": "npm run setup",
     "rm:node_modules": "rm -rf ./node_modules",
     "preclean-install": "npm run rm:node_modules",
     "clean-install": "yarn install --frozen-lockfile",
