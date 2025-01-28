@@ -12,10 +12,10 @@ inputs:
     required: false
     default: "."
 
-  script_preinstall:
-    description: preinstall
+  yarn_install_cli_options:
+    description: yarn install cli options
     required: false
-    default: ""
+    default: "--frozen-lockfile"
 
 runs:
   using: composite
@@ -30,7 +30,13 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       # NOTE: "npm run foo --if-present" does work
       # BUT "yarn run foo --if-present" does NOT work
-      run: yarn run ${{ inputs.script_preinstall }}
+      run: npm run ${{ inputs.script_preinstall }}
+
+    - name: npm run setup:ci
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      # run: yarn run setup:ci --if-present # FIXME does NOT work
+      run: npm run setup:ci --if-present
 
     - name: rm -rf ./node_modules
       shell: bash
@@ -38,7 +44,7 @@ runs:
 
     - name: yarn install
       shell: bash
-      run: yarn install --frozen-lockfile --cwd ${{ inputs.working-directory }}
+      run: yarn install ${{ inputs.yarn_install_cli_options }} --cwd ${{ inputs.working-directory }}
 
     - name: ls ./node_modules
       shell: bash

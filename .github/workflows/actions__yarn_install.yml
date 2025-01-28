@@ -30,7 +30,7 @@ jobs:
             ls_options: ""
 
     runs-on: ${{ matrix.OS }}
-    name: "ls ${{ matrix.ls_options }} @ ${{ matrix.OS }}"
+    name: ls ${{ matrix.ls_options }} @ ${{ matrix.OS }}
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
