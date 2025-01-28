@@ -1,0 +1,20 @@
+name: yarn audit
+on:
+  push:
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  # NOTE: is this job redundant?
+  # does dependency-review-action accomplish the same, and more?
+  yarn_audit:
+    name: yarn audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-yarn/.github/actions/yarn_install@main
+
+      - name: yarn audit
+        run: yarn audit
+        continue-on-error: true
