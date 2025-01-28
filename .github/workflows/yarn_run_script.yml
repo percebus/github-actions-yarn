@@ -39,7 +39,7 @@ jobs:
         with:
           working-directory: ${{ inputs.working-directory }}
 
-      - name: yarn run ${{ inputs.script }
+      - name: yarn run ${{ inputs.script }}
         # NOTE: --cwd not working
         working-directory: ${{ inputs.working-directory }}
         run: yarn run ${{ inputs.script }}
