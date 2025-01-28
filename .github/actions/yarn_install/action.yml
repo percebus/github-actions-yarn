@@ -49,3 +49,5 @@ runs:
     - name: ls ./node_modules
       shell: bash
       run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}/node_modules
+      # FIXME XXX? some nested yarn packages does NOT generate node_modules, even with an `.yarnrc.yml` file
+      continue-on-error: true
