@@ -1,0 +1,45 @@
+name: cmd run
+on:
+  # push: # DEBUG
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    inputs:
+      working-directory:
+        type: string
+        description: working-directory
+        required: false
+        default: "."
+
+      cmd:
+        type: string
+        description: The bash command to run.
+        required: false
+        default: yarn test
+
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    inputs:
+      working-directory:
+        type: string
+        description: working-directory
+        required: false
+        default: "."
+
+      cmd:
+        type: string
+        description: The yarn script to run.
+        required: false
+        default: yarn test
+
+jobs:
+  cmd_run:
+    name: ${{ inputs.cmd }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-yarn/.github/actions/yarn_install@main
+        with:
+          working-directory: ${{ inputs.working-directory }}
+
+      - name: ${{ inputs.cmd }}
+        working-directory: ${{ inputs.working-directory }}
+        run: ${{ inputs.cmd }}
