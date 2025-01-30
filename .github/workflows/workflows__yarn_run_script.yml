@@ -16,3 +16,17 @@ jobs:
     uses: ./.github/workflows/yarn_run_script.yml
     with:
       script: ${{ matrix.script }}
+
+  os_matrix:
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        OS:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+
+    uses: ./.github/workflows/yarn_run_script.yml
+    with:
+      runs-on: ${{ matrix.OS }}

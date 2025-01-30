@@ -2,20 +2,12 @@ name: yarn run script
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
-      working-directory:
+      runs-on:
         type: string
-        description: working-directory
+        description: The type of machine to run on
         required: false
-        default: "."
+        default: ubuntu-latest
 
-      script:
-        type: string
-        description: The yarn script to run.
-        required: false
-        default: test
-
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
-    inputs:
       working-directory:
         type: string
         description: working-directory
@@ -31,7 +23,7 @@ on:
 jobs:
   yarn_run:
     name: yarn run ${{ inputs.script }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/node_setup@main

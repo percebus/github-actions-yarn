@@ -1,8 +1,13 @@
 name: cmd run
 on:
-  # push: # DEBUG
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
+      runs-on:
+        type: string
+        description: The type of machine to run on
+        required: false
+        default: ubuntu-latest
+
       working-directory:
         type: string
         description: working-directory
@@ -15,24 +20,10 @@ on:
         required: false
         default: yarn test
 
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
-    inputs:
-      working-directory:
-        type: string
-        description: working-directory
-        required: false
-        default: "."
-
-      cmd:
-        type: string
-        description: The yarn script to run.
-        required: false
-        default: yarn test
-
 jobs:
   cmd_run:
     name: ${{ inputs.cmd }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
