@@ -15,6 +15,7 @@
 ### Workflows
 
 - [![yarn audit](https://github.com/percebus/github-actions-yarn/actions/workflows/yarn_audit.yml/badge.svg)](https://github.com/percebus/github-actions-yarn/actions/workflows/yarn_audit.yml)
+- [dependency-review](./.github/workflows/dependency-review.yml)
 - [cmd_run](./.github/workflows/cmd_run.yml)
 - [yarn_run_script](./.github/workflows/yarn_run_script.yml)
 
