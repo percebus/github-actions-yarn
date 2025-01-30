@@ -29,4 +29,6 @@ jobs:
 
     uses: ./.github/workflows/yarn_run_script.yml
     with:
+      # windows complains about EoL characters in the script
+      cmd: style
       runs-on: ${{ matrix.OS }}

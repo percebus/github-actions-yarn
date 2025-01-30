@@ -11,6 +11,7 @@ jobs:
       matrix:
         cmd:
           - yarn test
+          - yarn test --ignore-scripts
           - yarn lint
           - echo bananas
 
@@ -30,4 +31,5 @@ jobs:
 
     uses: ./.github/workflows/cmd_run.yml
     with:
+      cmd: yarn test --ignore-scripts
       runs-on: ${{ matrix.OS }}
