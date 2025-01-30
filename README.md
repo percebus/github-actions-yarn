@@ -11,8 +11,8 @@
 ### Workflows
 
 - [![yarn audit](https://github.com/percebus/github-actions-yarn/actions/workflows/yarn_audit.yml/badge.svg)](https://github.com/percebus/github-actions-yarn/actions/workflows/yarn_audit.yml)
-- [cmd_run](./workflows/cmd_run.yml)
-- [yarn_run_script](./workflows/yarn_run_script.yml)
+- [cmd_run](./.github/workflows/cmd_run.yml)
+- [yarn_run_script](./.github/workflows/yarn_run_script.yml)
 
 #### Tests
 
