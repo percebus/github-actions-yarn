@@ -1,0 +1,37 @@
+name: workflows/cmd_run
+on:
+  push:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  cmd_matrix:
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        cmd:
+          - yarn test
+          - yarn test --ignore-scripts
+          - yarn lint
+          - echo bananas
+
+    name: "cmd: '${{ matrix.cmd }}'"
+    uses: ./.github/workflows/cmd_run.yml
+    with:
+      cmd: ${{ matrix.cmd }}
+
+  os_matrix:
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        OS:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+
+    name: "@ ${{ matrix.OS }}"
+    uses: ./.github/workflows/cmd_run.yml
+    with:
+      cmd: echo "bananas"
+      runs-on: ${{ matrix.OS }}

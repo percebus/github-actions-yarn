@@ -1,0 +1,36 @@
+name: workflows/yarn_run_script
+on:
+  push:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  run_matrix:
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        script:
+          - test
+          - lint
+
+    name: "script: ${{ matrix.script }}"
+    uses: ./.github/workflows/yarn_run_script.yml
+    with:
+      script: ${{ matrix.script }}
+
+  os_matrix:
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        OS:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+
+    name: "@ ${{ matrix.OS }}"
+    uses: ./.github/workflows/yarn_run_script.yml
+    with:
+      # windows complains about EoL characters in the script
+      cmd: style
+      runs-on: ${{ matrix.OS }}
