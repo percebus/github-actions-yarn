@@ -6,6 +6,10 @@
 
 ### Actions
 
+- [yarn_install](./.github/actions/yarn_install)
+
+#### Tests
+
 - [![actions/yarn_install](https://github.com/percebus/github-actions-yarn/actions/workflows/test_actions__yarn_install.yml/badge.svg)](https://github.com/percebus/github-actions-yarn/actions/workflows/test_actions__yarn_install.yml)
 
 ### Workflows
