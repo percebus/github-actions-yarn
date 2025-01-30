@@ -15,6 +15,7 @@ jobs:
           - yarn lint
           - echo bananas
 
+    name: "cmd: '${{ matrix.cmd }}'"
     uses: ./.github/workflows/cmd_run.yml
     with:
       cmd: ${{ matrix.cmd }}
@@ -29,6 +30,7 @@ jobs:
           - windows-latest
           - macOS-latest
 
+    name: "@ ${{ matrix.OS }}"
     uses: ./.github/workflows/cmd_run.yml
     with:
       cmd: echo "bananas"

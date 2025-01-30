@@ -13,6 +13,7 @@ jobs:
           - test
           - lint
 
+    name: "script: ${{ matrix.script }}"
     uses: ./.github/workflows/yarn_run_script.yml
     with:
       script: ${{ matrix.script }}
@@ -27,6 +28,7 @@ jobs:
           - windows-latest
           - macOS-latest
 
+    name: "@ ${{ matrix.OS }}"
     uses: ./.github/workflows/yarn_run_script.yml
     with:
       # windows complains about EoL characters in the script
