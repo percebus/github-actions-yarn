@@ -31,5 +31,5 @@ jobs:
 
     uses: ./.github/workflows/cmd_run.yml
     with:
-      cmd: yarn test --ignore-scripts
+      cmd: echo "bananas"
       runs-on: ${{ matrix.OS }}
