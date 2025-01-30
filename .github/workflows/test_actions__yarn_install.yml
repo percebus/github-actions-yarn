@@ -1,4 +1,4 @@
-name: actions/yarn_install
+name: Test actions/yarn_install
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab

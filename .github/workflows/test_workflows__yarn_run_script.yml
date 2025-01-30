@@ -1,4 +1,4 @@
-name: workflows/yarn_run_script
+name: Test workflows/yarn_run_script
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
