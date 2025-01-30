@@ -4,7 +4,12 @@ on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 jobs:
+  default:
+    name: default
+    uses: ./.github/workflows/cmd_run.yml
+
   cmd_matrix:
+    needs: default
     strategy:
       max-parallel: 6
       fail-fast: false
@@ -21,6 +26,7 @@ jobs:
       cmd: ${{ matrix.cmd }}
 
   os_matrix:
+    needs: default
     strategy:
       max-parallel: 6
       fail-fast: false
