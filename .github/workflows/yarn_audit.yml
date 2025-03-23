@@ -1,8 +1,14 @@
 name: yarn audit
 on:
   push:
-  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    inputs:
+      ssh-private-key:
+        type: string
+        description: SSH private key
+        required: false
+
 
 jobs:
   # NOTE: is this job redundant?
@@ -12,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
+        with:
+          ssh-private-key: ${{ inputs.ssh-private-key }}
+
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: percebus/github-actions-yarn/.github/actions/yarn_install@main
 
