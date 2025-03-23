@@ -9,7 +9,6 @@ on:
         description: SSH private key
         required: false
 
-
 jobs:
   # NOTE: is this job redundant?
   # does dependency-review-action accomplish the same, and more?
