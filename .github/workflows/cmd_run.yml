@@ -8,6 +8,11 @@ on:
         required: false
         default: ubuntu-latest
 
+      ssh-private-key:
+        type: string
+        description: SSH private key
+        required: false
+
       working-directory:
         type: string
         description: working-directory
@@ -26,6 +31,9 @@ jobs:
     runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
+        with:
+          ssh-private-key: ${{ inputs.ssh-private-key }}
+
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: percebus/github-actions-yarn/.github/actions/yarn_install@main
         with:

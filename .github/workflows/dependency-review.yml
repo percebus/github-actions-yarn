@@ -5,6 +5,11 @@ on:
   #  Please ensure you are using the "pull_request" event for this workflow."
   pull_request:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    inputs:
+      ssh-private-key:
+        type: string
+        description: SSH private key
+        required: false
 
 permissions:
   contents: read
@@ -12,6 +17,10 @@ permissions:
 jobs:
   dependency-review:
     uses: percebus/github-actions-common/.github/workflows/dependency-review.yml@main
+    with:
+      ssh-private-key: ${{ inputs.ssh-private-key }}
 
   audit:
     uses: ./.github/workflows/yarn_audit.yml
+    with:
+      ssh-private-key: ${{ inputs.ssh-private-key }}
