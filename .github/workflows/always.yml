@@ -4,13 +4,7 @@ on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 jobs:
-  yarn_run_lint:
-    name: yarn run lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: percebus/github-actions-common/.github/actions/checkout@main
-      - uses: percebus/github-actions-node/.github/actions/node_setup@main
-      - uses: ./.github/actions/yarn_install
-
-      - name: yarn run lint
-        run: yarn run lint
+  lint:
+    uses: ./.github/workflows/yarn_run_script.yml
+    with:
+      script: lint

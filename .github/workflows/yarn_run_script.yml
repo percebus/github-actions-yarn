@@ -34,7 +34,7 @@ jobs:
         with:
           ssh-private-key: ${{ inputs.ssh-private-key }}
 
-      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: percebus/github-actions-yarn/.github/actions/yarn_install@main
         with:
           working-directory: ${{ inputs.working-directory }}
