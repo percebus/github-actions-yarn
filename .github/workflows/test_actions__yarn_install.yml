@@ -12,7 +12,7 @@ jobs:
       - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: ./.github/actions/yarn_install
 
-  ls_options:
+  ls_options__matrix:
     needs: default
     strategy:
       max-parallel: 6

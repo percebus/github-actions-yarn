@@ -8,7 +8,7 @@ jobs:
     name: default
     uses: ./.github/workflows/yarn_run_script.yml
 
-  script_matrix:
+  script__matrix:
     needs: default
     strategy:
       max-parallel: 6
@@ -23,7 +23,7 @@ jobs:
     with:
       script: ${{ matrix.script }}
 
-  os_matrix:
+  os__matrix:
     needs: default
     strategy:
       max-parallel: 6

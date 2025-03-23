@@ -8,7 +8,7 @@ jobs:
     name: default
     uses: ./.github/workflows/cmd_run.yml
 
-  cmd_matrix:
+  cmd__matrix:
     needs: default
     strategy:
       max-parallel: 6
@@ -25,7 +25,7 @@ jobs:
     with:
       cmd: ${{ matrix.cmd }}
 
-  os_matrix:
+  os__matrix:
     needs: default
     strategy:
       max-parallel: 6
