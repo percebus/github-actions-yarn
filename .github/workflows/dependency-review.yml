@@ -32,7 +32,7 @@ jobs:
       ssh-private-key: ${{ inputs.ssh-private-key }}
 
   audit:
-    uses: ./.github/workflows/audit.yml
+    uses: percebus/github-actions-yarn/.github/workflows/audit.yml@main
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }}
       yarn_audit_cli_options: ${{ inputs.yarn_audit_cli_options }}
