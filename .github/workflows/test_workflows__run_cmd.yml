@@ -1,27 +1,34 @@
-name: Test workflows/yarn_run_script
+name: Test workflows/run_cmd
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
+# TODO
+# concurrency:
+#   group: ${{ github.ref }}-${{ github.workflow }}
+#   cancel-in-progress: true
+
 jobs:
   default:
     name: default
-    uses: ./.github/workflows/yarn_run_script.yml
+    uses: ./.github/workflows/run_cmd.yml
 
-  script__matrix:
+  cmd__matrix:
     needs: default
     strategy:
       max-parallel: 6
       fail-fast: false
       matrix:
-        script:
-          - test
-          - lint
+        cmd:
+          - yarn test
+          - yarn test --ignore-scripts
+          - yarn lint
+          - echo bananas
 
-    name: "script: ${{ matrix.script }}"
-    uses: ./.github/workflows/yarn_run_script.yml
+    name: "cmd: '${{ matrix.cmd }}'"
+    uses: ./.github/workflows/run_cmd.yml
     with:
-      script: ${{ matrix.script }}
+      cmd: ${{ matrix.cmd }}
 
   os__matrix:
     needs: default
@@ -35,8 +42,7 @@ jobs:
           - macOS-latest
 
     name: "@ ${{ matrix.OS }}"
-    uses: ./.github/workflows/yarn_run_script.yml
+    uses: ./.github/workflows/run_cmd.yml
     with:
-      # windows complains about EoL characters in the script
-      script: style
+      cmd: echo "bananas"
       runs-on: ${{ matrix.OS }}

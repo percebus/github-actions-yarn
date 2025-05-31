@@ -11,6 +11,17 @@ on:
         description: SSH private key
         required: false
 
+      yarn_audit_cli_options:
+        type: string
+        description: Options to pass to the yarn
+        required: false
+        default: --groups dependencies
+
+# TODO
+# concurrency:
+#   group: ${{ github.ref }}-${{ github.workflow }}
+#   cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -21,6 +32,7 @@ jobs:
       ssh-private-key: ${{ inputs.ssh-private-key }}
 
   audit:
-    uses: ./.github/workflows/yarn_audit.yml
+    uses: ./.github/workflows/audit.yml
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }}
+      yarn_audit_cli_options: ${{ inputs.yarn_audit_cli_options }}

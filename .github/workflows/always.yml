@@ -3,8 +3,13 @@ on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
+# TODO
+# concurrency:
+#   group: ${{ github.ref }}-${{ github.workflow }}
+#   cancel-in-progress: true
+
 jobs:
   lint:
-    uses: ./.github/workflows/yarn_run_script.yml
+    uses: ./.github/workflows/run_script.yml
     with:
       script: lint

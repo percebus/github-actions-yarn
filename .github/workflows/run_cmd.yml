@@ -1,4 +1,4 @@
-name: yarn run script
+name: cmd run
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
@@ -19,15 +19,20 @@ on:
         required: false
         default: "."
 
-      script:
+      cmd:
         type: string
-        description: The yarn script to run.
+        description: The bash command to run.
         required: false
-        default: test
+        default: yarn test
+
+# TODO
+# concurrency:
+#   group: ${{ github.ref }}-${{ github.workflow }}
+#   cancel-in-progress: true
 
 jobs:
-  yarn_run:
-    name: yarn run ${{ inputs.script }}
+  run_cmd:
+    name: ${{ inputs.cmd }}
     runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
@@ -35,11 +40,10 @@ jobs:
           ssh-private-key: ${{ inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: percebus/github-actions-yarn/.github/actions/yarn_install@main
+      - uses: ./.github/actions/install
         with:
           working-directory: ${{ inputs.working-directory }}
 
-      - name: yarn run ${{ inputs.script }}
-        # NOTE: --cwd not working
+      - name: ${{ inputs.cmd }}
         working-directory: ${{ inputs.working-directory }}
-        run: yarn run ${{ inputs.script }}
+        run: ${{ inputs.cmd }}
