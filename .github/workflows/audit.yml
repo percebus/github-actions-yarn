@@ -9,6 +9,12 @@ on:
         description: SSH private key
         required: false
 
+      yarn_audit_cli_options:
+        type: string
+        description: Options to pass to the yarn
+        required: false
+        default: --groups dependencies
+
 # TODO
 # concurrency:
 #   group: ${{ github.ref }}-${{ github.workflow }}
@@ -29,5 +35,5 @@ jobs:
       - uses: ./.github/actions/install
 
       - name: yarn audit
-        run: yarn audit
+        run: yarn audit ${{ inputs.yarn_audit_cli_options }}
         continue-on-error: true
