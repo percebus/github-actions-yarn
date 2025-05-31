@@ -13,7 +13,7 @@ on:
         type: string
         description: Options to pass to the yarn
         required: false
-        default: --groups dependencies
+        default: "--groups dependencies"
 
 # TODO
 # concurrency:
