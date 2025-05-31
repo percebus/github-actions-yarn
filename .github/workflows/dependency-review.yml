@@ -21,6 +21,6 @@ jobs:
       ssh-private-key: ${{ inputs.ssh-private-key }}
 
   audit:
-    uses: ./.github/workflows/yarn_audit.yml
+    uses: ./.github/workflows/audit.yml
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }}

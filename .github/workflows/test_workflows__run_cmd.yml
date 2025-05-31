@@ -1,4 +1,4 @@
-name: Test workflows/cmd_run
+name: Test workflows/run_cmd
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
@@ -6,7 +6,7 @@ on:
 jobs:
   default:
     name: default
-    uses: ./.github/workflows/cmd_run.yml
+    uses: ./.github/workflows/run_cmd.yml
 
   cmd__matrix:
     needs: default
@@ -21,7 +21,7 @@ jobs:
           - echo bananas
 
     name: "cmd: '${{ matrix.cmd }}'"
-    uses: ./.github/workflows/cmd_run.yml
+    uses: ./.github/workflows/run_cmd.yml
     with:
       cmd: ${{ matrix.cmd }}
 
@@ -37,7 +37,7 @@ jobs:
           - macOS-latest
 
     name: "@ ${{ matrix.OS }}"
-    uses: ./.github/workflows/cmd_run.yml
+    uses: ./.github/workflows/run_cmd.yml
     with:
       cmd: echo "bananas"
       runs-on: ${{ matrix.OS }}

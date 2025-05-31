@@ -1,4 +1,4 @@
-name: Test actions/yarn_install
+name: Test actions/install
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: ./.github/actions/yarn_install
+      - uses: ./.github/actions/install
 
   ls_options__matrix:
     needs: default
@@ -34,6 +34,6 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: ./.github/actions/yarn_install
+      - uses: ./.github/actions/install
         with:
           ls_options: ${{ matrix.ls_options }}

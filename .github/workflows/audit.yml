@@ -21,7 +21,7 @@ jobs:
           ssh-private-key: ${{ inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: percebus/github-actions-yarn/.github/actions/yarn_install@main
+      - uses: ./.github/workflows/install.yml
 
       - name: yarn audit
         run: yarn audit
