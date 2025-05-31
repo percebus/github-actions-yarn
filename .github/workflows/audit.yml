@@ -9,6 +9,10 @@ on:
         description: SSH private key
         required: false
 
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   # NOTE: is this job redundant?
   # does dependency-review-action accomplish the same, and more?
