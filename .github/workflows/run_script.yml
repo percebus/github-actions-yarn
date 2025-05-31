@@ -26,7 +26,7 @@ on:
         default: test
 
 jobs:
-  yarn_run:
+  yarn_run_script:
     name: yarn run ${{ inputs.script }}
     runs-on: ${{ inputs.runs-on }}
     steps:

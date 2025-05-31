@@ -1,4 +1,4 @@
-name: Test workflows/yarn_run_script
+name: Test workflows/run_script
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
@@ -6,7 +6,7 @@ on:
 jobs:
   default:
     name: default
-    uses: ./.github/workflows/yarn_run_script.yml
+    uses: ./.github/workflows/run_script.yml
 
   script__matrix:
     needs: default
@@ -19,7 +19,7 @@ jobs:
           - lint
 
     name: "script: ${{ matrix.script }}"
-    uses: ./.github/workflows/yarn_run_script.yml
+    uses: ./.github/workflows/run_script.yml
     with:
       script: ${{ matrix.script }}
 
@@ -35,7 +35,7 @@ jobs:
           - macOS-latest
 
     name: "@ ${{ matrix.OS }}"
-    uses: ./.github/workflows/yarn_run_script.yml
+    uses: ./.github/workflows/run_script.yml
     with:
       # windows complains about EoL characters in the script
       script: style
