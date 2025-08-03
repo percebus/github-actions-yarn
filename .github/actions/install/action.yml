@@ -1,5 +1,6 @@
 name: yarn install
 description: yarn install
+
 inputs:
   working-directory:
     description: working-directory

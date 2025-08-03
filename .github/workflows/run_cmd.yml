@@ -1,4 +1,5 @@
 name: cmd run
+
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
@@ -24,11 +25,6 @@ on:
         description: The bash command to run.
         required: false
         default: yarn test
-
-# TODO
-# concurrency:
-#   group: ${{ github.ref }}-${{ github.workflow }}
-#   cancel-in-progress: true
 
 jobs:
   run_cmd:

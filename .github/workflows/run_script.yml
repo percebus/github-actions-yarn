@@ -1,4 +1,5 @@
 name: yarn run script
+
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
@@ -24,10 +25,6 @@ on:
         description: The yarn script to run.
         required: false
         default: test
-
-# concurrency:
-#   group: ${{ github.ref }}-${{ github.workflow }}
-#   cancel-in-progress: true
 
 jobs:
   yarn_run_script:
