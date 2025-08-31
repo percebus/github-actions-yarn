@@ -1,8 +1,8 @@
 # github-actions-yarn
 
-[`LICENSE`](./LICENSE)
-
 [![[C]ontinuous [I]ntegration](https://github.com/percebus/github-actions-yarn/actions/workflows/always.yml/badge.svg)](https://github.com/percebus/github-actions-yarn/actions/workflows/always.yml) [![Pull Request](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml)
+
+[`LICENSE`](./LICENSE)
 
 ## GitHub
 
