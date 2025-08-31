@@ -24,11 +24,9 @@ When developing locally, sometimes you want to run `yarn run setup(:ci)` only 1x
 ## References
 
 - [`npm` CLI Commands](https://docs.npmjs.com/cli/v11/commands)
-
   - [`npm-install`](https://docs.npmjs.com/cli/v11/commands/npm-install)
   - [`npm-ci`](https://docs.npmjs.com/cli/v11/commands/npm-ci)
   - [`npm-run`](https://docs.npmjs.com/cli/v11/commands/npm-run)
-
 - [`yarn` CLI Reference](https://yarnpkg.com/cli)
   - [`yarn install`](https://yarnpkg.com/cli/install)
   - [`yarn run`](https://yarnpkg.com/cli/run)
