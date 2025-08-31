@@ -1,7 +1,20 @@
 name: yarn audit
+
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    inputs:
+      ssh-private-key:
+        type: string
+        description: SSH private key
+        required: false
+
+      yarn_audit_cli_options:
+        type: string
+        description: Options to pass to the yarn
+        required: false
+        default: "--groups dependencies"
+
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       ssh-private-key:
@@ -14,6 +27,11 @@ on:
         description: Options to pass to the yarn
         required: false
         default: "--groups dependencies"
+
+# NOTE: Set in final file
+# permissions:
+#   contents: read
+#   pull-requests: read
 
 jobs:
   # NOTE: is this job redundant?

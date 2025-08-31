@@ -26,6 +26,9 @@ on:
         required: false
         default: test
 
+permissions:
+  contents: read
+
 jobs:
   yarn_run_script:
     name: yarn run ${{ inputs.script }}

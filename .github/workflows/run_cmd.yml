@@ -26,6 +26,9 @@ on:
         required: false
         default: yarn test
 
+permissions:
+  contents: read
+
 jobs:
   run_cmd:
     name: ${{ inputs.cmd }}

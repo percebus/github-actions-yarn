@@ -1,4 +1,5 @@
 name: "[C]ontinuous [I]ntegration"
+
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
@@ -12,3 +13,22 @@ jobs:
     uses: ./.github/workflows/run_script.yml
     with:
       script: lint
+
+  codeQL:
+    needs: lint
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+          - actions
+          - javascript
+
+    name: "CodeQL: ${{ matrix.language }}"
+    uses: percebus/github-actions-compliance/.github/workflows/codeql_analyze.yml@main
+    with:
+      language: ${{ matrix.language }}
