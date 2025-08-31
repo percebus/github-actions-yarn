@@ -7,7 +7,7 @@ Does some basic stuff
 - `$> npm run setup:ci` (if present)\*
 - `$> yarn install`
 
-> NOTE: `yarn` does NOT support `run --if-present` (yet)
+> \*NOTE: `yarn run` does NOT support `--if-present` (yet)
 
 ## Motivation
 
