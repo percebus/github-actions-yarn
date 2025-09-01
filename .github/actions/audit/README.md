@@ -1,6 +1,6 @@
 # (yarn) audit
 
-![Pull Request](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml)
+[![Pull Request](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml)
 
 [`LICENSE`](./LICENSE)
 

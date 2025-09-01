@@ -11,7 +11,7 @@
 | action                                 | tests                                                                                                                                                                                                                    |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [`install`](./.github/actions/install) | [![actions/install](https://github.com/percebus/github-actions-yarn/actions/workflows/test_actions__install.yml/badge.svg)](https://github.com/percebus/github-actions-yarn/actions/workflows/test_actions__install.yml) |
-| [`audit`](./.github/actions/audit)     | ![Pull Request](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml)    |
+| [`audit`](./.github/actions/audit)     | [![Pull Request](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-yarn/actions/workflows/pull_request.yml)   |
 
 ### Workflows
 
