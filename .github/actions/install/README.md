@@ -1,5 +1,7 @@
 # (yarn) install
 
+[![actions/install](https://github.com/percebus/github-actions-yarn/actions/workflows/test_actions__install.yml/badge.svg)](https://github.com/percebus/github-actions-yarn/actions/workflows/test_actions__install.yml)
+
 [`LICENSE`](./LICENSE)
 
 Does some basic stuff
