@@ -57,13 +57,7 @@ jobs:
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: percebus/github-actions-yarn/.github/actions/install@main
-
-      # - uses: percebus/github-actions-yarn/.github/actions/audit@main
-      #   with:
-      #     working-directory: ${{ inputs.working-directory }}
-      #     yarn_audit_cli_options: ${{ inputs.yarn_audit_cli_options }}
-
-      # # TODO make an action
-      - name: yarn audit
-        run: yarn audit ${{ inputs.yarn_audit_cli_options }}
-        continue-on-error: true
+      - uses: percebus/github-actions-yarn/.github/actions/audit@main
+        with:
+          working-directory: ${{ inputs.working-directory }}
+          yarn_audit_cli_options: ${{ inputs.yarn_audit_cli_options }}
