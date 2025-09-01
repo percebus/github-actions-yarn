@@ -8,15 +8,17 @@ on:
         description: SSH private key
         required: false
 
+      working-directory:
+        type: string
+        description: Working directory
+        required: false
+        default: .
+
       yarn_audit_cli_options:
         type: string
         description: Options to pass to the yarn
         required: false
         default: --groups dependencies
-
-permissions:
-  contents: read
-  pull-requests: read
 
 # NOTE: Set in final file
 # permissions:
