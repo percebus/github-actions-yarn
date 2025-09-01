@@ -17,5 +17,5 @@ runs:
   steps:
     - name: yarn audit
       shell: bash
-      run: yarn audit --prefix ${{ inputs.working-directory }} ${{ inputs.yarn_audit_cli_options }}
+      run: yarn audit --cwd ${{ inputs.working-directory }} ${{ inputs.yarn_audit_cli_options }}
       continue-on-error: true

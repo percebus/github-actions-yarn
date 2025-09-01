@@ -7,6 +7,7 @@ inputs:
     required: false
     default: "."
 
+  # TODO RENAME: ls_cli_options
   ls_options:
     description: ls options
     required: false
@@ -37,7 +38,7 @@ runs:
 
     - name: yarn install
       shell: bash
-      run: yarn install ${{ inputs.yarn_install_cli_options }} --cwd ${{ inputs.working-directory }}
+      run: yarn install --cwd ${{ inputs.working-directory }} ${{ inputs.yarn_install_cli_options }}
 
     - name: ls ./node_modules
       shell: bash
