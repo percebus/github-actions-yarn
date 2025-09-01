@@ -1,0 +1,21 @@
+name: yarn audit
+description: yarn audit
+
+inputs:
+  working-directory:
+    description: working-directory
+    required: false
+    default: "."
+
+  yarn_audit_cli_options:
+    description: yarn audit CLI options
+    required: false
+    default: "--groups dependencies"
+
+runs:
+  using: composite
+  steps:
+    - name: yarn audit
+      shell: bash
+      run: yarn audit --prefix ${{ inputs.working-directory }} ${{ inputs.yarn_audit_cli_options }}
+      continue-on-error: true
